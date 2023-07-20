@@ -1,0 +1,424 @@
+#!/bin/bash
+#
+#SBATCH -J HardFilter
+#SBATCH -p core
+#SBATCH -n 1
+#SBATCH -t 12:00:00
+#SBATCH -A snic2022-22-589
+#SBATCH -M snowy
+#SBATCH --mail-user luis.leal@ebc.uu.se
+#SBATCH --mail-type=FAIL
+ulimit -c unlimited
+set -eo pipefail
+
+
+#### Script used to perform hard filtering on SNPs, invariant sites, and indel variants
+
+
+
+
+module load bioinfo-tools
+module load GATK/4.2.0.0
+module load vcftools/0.1.16
+
+
+## SnpSift (SnpSift version 5.0)
+## https://pcingola.github.io/SnpEff/ss_filter/
+SnpSift=/crex1/proj/snic2017-7-149/private/Luis/z_APPS/snpEff/SnpSift.jar
+
+
+
+
+
+############### input data files and paths
+
+#remember initial path
+SRCDIR_INI=$(pwd)
+
+
+#read VCF file (with path)
+READ1=${1:?msg}
+
+#read VCF file (without path)
+VCF1=${2:?msg}		
+
+#output file (root name)
+RR=${3:?msg}
+
+# interval list (BED format) exome data [target genes]
+ANNF=${4:?msg}
+
+# reference genome
+refGenome=${5:?msg}			
+
+# reference genome folder
+refGenomefolder=${6:?msg}
+
+# mapper flag
+FLAG_MAPPER=${7:?msg}
+
+# Variant type
+VART=${8:?msg}
+
+# Ploidy
+PLOIDY=${9:?msg}
+
+# Minimum depth
+DPmin=${10:?msg}
+
+
+### Output name (root)
+OUTF=${VCF1%.vcf.gz}
+
+
+echo
+echo "VCF file:" $READ1
+echo "Variant type:" $VART
+echo "Ploidy:" $PLOIDY
+echo "Mapper:" $FLAG_MAPPER
+echo "Interval list:" $ANNF
+echo "Reference genome:" $refGenome
+echo "Reference genome folder:" $refGenomefolder
+echo "Output folder:" $RR
+echo
+echo
+
+
+
+
+
+
+########### copy reference genome to scratch disk
+cd $SNIC_TMP
+rsync -ah $refGenomefolder/${refGenome%.fa*}* .
+
+
+
+
+################# Create intervals list (target genes)
+################# File must have ".intervals" extension (gatk crashes otherwise) [see: https://gatk.broadinstitute.org/hc/en-us/articles/360035531852?id=11009]
+
+### Convert position 0 to position 1 (GATK does not accept position 0)
+echo
+awk 'BEGIN {OFS="\t"} $2 == "0" {$2 = "1"}; 1'  $ANNF > $SNIC_TMP/__aux0.txt
+
+### Convert intervals list to chr1:100-200 format
+echo
+cat $SNIC_TMP/__aux0.txt | cut -f1 > $SNIC_TMP/__aux1.txt
+cat $SNIC_TMP/__aux0.txt | cut -f2 > $SNIC_TMP/__aux2.txt
+cat $SNIC_TMP/__aux0.txt | cut -f3 > $SNIC_TMP/__aux3.txt
+paste -d':' $SNIC_TMP/__aux1.txt $SNIC_TMP/__aux2.txt > $SNIC_TMP/__auxA.txt
+paste -d'-' $SNIC_TMP/__auxA.txt $SNIC_TMP/__aux3.txt > $SNIC_TMP/__targets.intervals
+
+
+
+
+
+
+
+
+################ Select variants GATK 4.2.2.0
+
+####### Filer variants
+
+
+# minimum depth
+aux_DP="DP < "${DPmin}
+
+
+
+### SNPs
+echo
+echo "Hard filtering start"
+echo "Depth filter:" $aux_DP
+echo
+
+
+if [[ $FLAG_MAPPER = "BWA" && $VART = "snps" && $PLOIDY = "2" ]] ; then
+
+   gatk --java-options "-Xmx5g" \
+   VariantFiltration \
+   -R $SNIC_TMP/${refGenome} \
+   -V $READ1 \
+   --intervals $SNIC_TMP/__targets.intervals \
+   --filter-name "QD_filter" \
+   --filter-expression "QD < 5.0" \
+   --filter-name "FS_filter" \
+   --filter-expression "FS > 10.0" \
+   --filter-name "MQ_filter" \
+   --filter-expression "MQ < 40.0" \
+   --filter-name "SOR_filter" \
+   --filter-expression "SOR > 5.0" \
+   --filter-name "MQRankSum_filter_min" \
+   --filter-expression "MQRankSum < -2.5" \
+   --filter-name "MQRankSum_filter_max" \
+   --filter-expression "MQRankSum > 2.5" \
+   --filter-name "ReadPosRankSum_filter_min" \
+   --filter-expression "ReadPosRankSum < -2.5" \
+   --filter-name "ReadPosRankSum_filter_max" \
+   --filter-expression "ReadPosRankSum > 2.5" \
+   --filter-name "Depth_filter_min" \
+   --filter-expression "DP < "${DPmin} \
+   --filter-name "InbreedingCoeff_filter_min" \
+   --filter-expression "InbreedingCoeff < -0.8" \
+   --verbosity ERROR \
+   -O $RR/${OUTF}-filtered_tranche_2_PHYLO.vcf.gz
+
+
+
+fi 
+
+
+
+
+if [[ $FLAG_MAPPER = "BWA" && $VART = "snps" && $PLOIDY = "4" ]] ; then
+
+   gatk --java-options "-Xmx5g" \
+   VariantFiltration \
+   -R $SNIC_TMP/${refGenome} \
+   -V $READ1 \
+   --intervals $SNIC_TMP/__targets.intervals \
+   --filter-name "QD_filter" \
+   --filter-expression "QD < 3.0" \
+   --filter-name "FS_filter" \
+   --filter-expression "FS > 10.0" \
+   --filter-name "MQ_filter" \
+   --filter-expression "MQ < 40.0" \
+   --filter-name "SOR_filter" \
+   --filter-expression "SOR > 5.0" \
+   --filter-name "MQRankSum_filter_min" \
+   --filter-expression "MQRankSum < -2.5" \
+   --filter-name "MQRankSum_filter_max" \
+   --filter-expression "MQRankSum > 2.5" \
+   --filter-name "ReadPosRankSum_filter_min" \
+   --filter-expression "ReadPosRankSum < -2.5" \
+   --filter-name "ReadPosRankSum_filter_max" \
+   --filter-expression "ReadPosRankSum > 2.5" \
+   --filter-name "Depth_filter_min" \
+   --filter-expression "DP < "${DPmin} \
+   --verbosity ERROR \
+   -O $RR/${OUTF}-filtered_tranche_2_PHYLO.vcf.gz
+	
+
+fi 
+
+
+
+
+
+
+
+### INDELS
+
+if [[ $VART = "indels" && $PLOIDY = "2" ]] ; then
+
+   gatk --java-options "-Xmx5g" \
+   VariantFiltration \
+   -R $SNIC_TMP/${refGenome} \
+   -V $READ1 \
+   --intervals $SNIC_TMP/__targets.intervals \
+   --filter-name "QD_filter" \
+   --filter-expression "QD < 5.0" \
+   --filter-name "FS_filter" \
+   --filter-expression "FS > 10.0" \
+   --filter-name "SOR_filter" \
+   --filter-expression "SOR > 5.0" \
+   --filter-name "MQRankSum_filter_min" \
+   --filter-expression "MQRankSum < -2.5" \
+   --filter-name "MQRankSum_filter_max" \
+   --filter-expression "MQRankSum > 2.5" \
+   --filter-name "ReadPosRankSum_filter_min" \
+   --filter-expression "ReadPosRankSum < -2.5" \
+   --filter-name "ReadPosRankSum_filter_max" \
+   --filter-expression "ReadPosRankSum > 2.5" \
+   --filter-name "Depth_filter_min" \
+   --filter-expression "DP < "${DPmin} \
+   --filter-name "InbreedingCoeff_filter_min" \
+   --filter-expression "InbreedingCoeff < -0.8" \
+   --verbosity ERROR \
+   -O $RR/${OUTF}-filtered_tranche_2_PHYLO.vcf.gz
+	
+
+fi 
+
+
+if [[ $VART = "indels" && $PLOIDY = "4" ]] ; then
+
+   gatk --java-options "-Xmx5g" \
+   VariantFiltration \
+   -R $SNIC_TMP/${refGenome} \
+   -V $READ1 \
+   --intervals $SNIC_TMP/__targets.intervals \
+   --filter-name "QD_filter" \
+   --filter-expression "QD < 3.0" \
+   --filter-name "FS_filter" \
+   --filter-expression "FS > 10.0" \
+   --filter-name "SOR_filter" \
+   --filter-expression "SOR > 5.0" \
+   --filter-name "MQRankSum_filter_min" \
+   --filter-expression "MQRankSum < -2.5" \
+   --filter-name "MQRankSum_filter_max" \
+   --filter-expression "MQRankSum > 2.5" \
+   --filter-name "ReadPosRankSum_filter_min" \
+   --filter-expression "ReadPosRankSum < -2.5" \
+   --filter-name "ReadPosRankSum_filter_max" \
+   --filter-expression "ReadPosRankSum > 2.5" \
+   --filter-name "Depth_filter_min" \
+   --filter-expression "DP < "${DPmin} \
+   --filter-name "InbreedingCoeff_filter_min" \
+   --filter-expression "InbreedingCoeff < -0.8" \
+   --verbosity ERROR \
+   -O $RR/${OUTF}-filtered_tranche_2_PHYLO.vcf.gz
+	
+
+fi 
+
+
+
+
+
+
+
+####### >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IMPORTANT NOTICE  <<<<<<<<<<<<<<<<<
+####### Data processed up to here will be use for phylogeny.
+#       From this point on, data is being processed for admixture and PCA analysis.
+
+
+
+
+
+####### Filter VCF file based on genotype fields (failed genotypes set to ./.):   		>>>> DO NOT DO THIS STEP WHEN PROCESSING DATA FOR PHYLOGENY
+##  allele min depth (4)         genotype set to ./. for a specific sample if read depth is 4 or lower
+## genotype quality (3)		  [phread-scaled; -10log(0.5)=3]   # genotype quality >3 if variant exists prob of wrong snp calling < 0.5
+
+echo
+echo
+echo "Filter per genotype (DP and genotype quality)"
+echo
+
+zcat $RR/${OUTF}-filtered_tranche_2_PHYLO.vcf.gz > $SNIC_TMP/_filtered_tranche_2.vcf
+
+java -Xmx5G -jar $SnpSift \
+                 filter "( GEN[*].DP > 4 ) | ( GEN[*].GQ > 3 )" \
+                 $SNIC_TMP/_filtered_tranche_2.vcf \
+                 > $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_DPpass.vcf
+
+
+
+# Index vcf file
+echo
+echo "Index VCF file"
+gatk --java-options "-Xmx5G" \
+	            IndexFeatureFile \
+	            -I $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_DPpass.vcf
+
+
+
+
+
+
+
+####### include only variants if genotyping has been done in at least 50% of the samples.   >>>> DO NOT DO THIS STEP WHEN PROCESSING DATA FOR PHYLOGENY
+echo
+echo
+echo "Filter per nocall-fraction"
+echo
+
+gatk --java-options "-Xmx5g" \
+     SelectVariants \
+     -R $SNIC_TMP/${refGenome} \
+     -V $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_DPpass.vcf \
+     --intervals $SNIC_TMP/__targets.intervals \
+     --max-nocall-fraction 0.5 \
+     --remove-unused-alternates true \
+     --exclude-non-variants true \
+     --exclude-filtered true \
+     -O $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf.gz
+
+
+
+
+
+
+
+####### Identify and remove samples with more than 50% missing calls		>>>> DO NOT DO THIS STEP WHEN PROCESSING DATA FOR PHYLOGENY
+echo
+echo
+echo "Filter per missing calls"
+echo
+
+# Identify samples with more than 50% missing calls
+if [[ $PLOIDY = "2" ]] ; then
+   # Calculate proportion of missing data per sample
+   vcftools --gzvcf \
+         $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf.gz \
+         --missing-indv \
+         --out $RR/${OUTF}_50perct_missingCalls
+fi
+
+if [[ $PLOIDY = "4" ]] ; then
+
+   # as vcftools does not recognize polyploids, convert './././.' and '././.' to './.'
+   zcat $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf.gz | sed 's:[.]/[.]/[.]/[.]:./.:g' > $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux.vcf
+   cat $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux.vcf | sed 's:[.]/[.]/[.]:./.:g' > $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux2.vcf
+   cat $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux2.vcf | sed 's:[0-9]/[0-9]/[0-9]/[0-9]:0/0:g' > $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux3.vcf
+   cat $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract_aux3.vcf | sed 's:[0-9]/[0-9]/[0-9]:0/0:g' > $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf
+
+
+   # Calculate proportion of missing data per sample
+   vcftools --vcf \
+         $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf \
+         --missing-indv \
+         --out $RR/${OUTF}_50perct_missingCalls
+fi
+
+echo
+awk '$5 > 0.5' $RR/${OUTF}_50perct_missingCalls.imiss | cut -f1 > $RR/${OUTF}_50perct_missingCalls.list
+
+
+
+# Filter samples with more than 50% missing calls
+echo
+
+gatk --java-options "-Xmx5g" \
+     SelectVariants \
+     -R $SNIC_TMP/${refGenome} \
+     -V $SNIC_TMP/${OUTF}-filtered_tranche_2_aux_ncfract.vcf.gz \
+     --intervals $SNIC_TMP/__targets.intervals \
+     --exclude-sample-name $RR/${OUTF}_50perct_missingCalls.list \
+     -O $RR/${OUTF}-filtered_tranche_2_PASS_FINAL.vcf.gz
+
+
+
+
+
+
+####### keep biallelic variants only		>>>> DO NOT DO THIS STEP WHEN PROCESSING DATA FOR PHYLOGENY
+echo
+echo
+echo "Filter by BIALLELIC"
+echo
+
+gatk --java-options "-Xmx5g" \
+     SelectVariants \
+     -R $SNIC_TMP/${refGenome} \
+     -V $RR/${OUTF}-filtered_tranche_2_PASS_FINAL.vcf.gz \
+     --intervals $SNIC_TMP/__targets.intervals \
+     --restrict-alleles-to BIALLELIC \
+     -O $RR/${OUTF}-filtered_tranche_2_PASS-BIALLELIC_FINAL.vcf.gz
+
+
+
+
+
+#### clean scratch disk
+rm -f $SNIC_TMP/${OUTF}*
+rm -f $SNIC_TMP/${refGenome%.fa*}*
+rm -f $SNIC_TMP/_*
+
+
+
+
+
+
+
