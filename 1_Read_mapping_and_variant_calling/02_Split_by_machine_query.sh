@@ -11,8 +11,7 @@ ulimit -c unlimited
 set -eo pipefail
 
 
-## Takes a fastq file as input and produces a separate fastq for each sequencing lane.
-## It is assumed that input fastq files have already been split by sequencing-machine/run/flow-cell, if required.
+## Takes a fastq file as input and produces a separate fastq for each sequencing-machine.
 
 
 # load modules
