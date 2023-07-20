@@ -1,0 +1,140 @@
+#!/bin/bash
+#
+#SBATCH -J SelectVar
+#SBATCH -p core
+#SBATCH -n 1
+#SBATCH -t 03:00:00
+#SBATCH -A snic2022-22-589
+#SBATCH -M snowy
+#SBATCH --mail-user luis.leal@ebc.uu.se
+#SBATCH --mail-type=FAIL
+ulimit -c unlimited
+
+
+
+# Script used to split VCF file into two separate files, one for SNP+invariant sites and the other containing only INDEL variants
+
+
+
+module load bioinfo-tools
+module load GATK/4.2.0.0
+
+
+############### input data files and paths
+
+#remember initial path
+SRCDIR_INI=$(pwd)
+
+
+#read VCF file (with path)
+READ1=${1:?msg}
+
+#read VCF file (without path)
+VCF1=${2:?msg}		
+
+#output file (root name)
+RR=${3:?msg}
+
+# interval list (BED format) exome data [target genes]
+ANNF=${4:?msg}
+
+# reference genome
+refGenome=${5:?msg}			
+
+# reference genome folder
+refGenomefolder=${6:?msg}
+
+
+
+
+### Output name (root)
+OUTF=${VCF1%.vcf.gz}
+
+
+
+echo
+echo "VCF file:" $READ1
+echo "Interval list:" $ANNF
+echo "Reference genome:" $refGenome
+echo "Reference genome folder:" $refGenomefolder
+echo "Output folder:" $RR
+echo
+echo
+
+
+
+########### copy reference genome to scratch disk
+
+cd $SNIC_TMP
+rsync -ah $refGenomefolder/${refGenome%.fa*}* .
+
+
+
+
+################# Create intervals list (target genes)
+################# File must have ".intervals" extension (gatk crashes otherwise) [see: https://gatk.broadinstitute.org/hc/en-us/articles/360035531852?id=11009]
+
+### Convert position 0 to position 1 (GATK does not accept position 0)
+echo
+awk 'BEGIN {OFS="\t"} $2 == "0" {$2 = "1"}; 1'  $ANNF > $SNIC_TMP/__aux0.txt
+
+### Convert intervals list to chr1:100-200 format
+echo
+cat $SNIC_TMP/__aux0.txt | cut -f1 > $SNIC_TMP/__aux1.txt
+cat $SNIC_TMP/__aux0.txt | cut -f2 > $SNIC_TMP/__aux2.txt
+cat $SNIC_TMP/__aux0.txt | cut -f3 > $SNIC_TMP/__aux3.txt
+paste -d':' $SNIC_TMP/__aux1.txt $SNIC_TMP/__aux2.txt > $SNIC_TMP/__auxA.txt
+paste -d'-' $SNIC_TMP/__auxA.txt $SNIC_TMP/__aux3.txt > $SNIC_TMP/__targets.intervals
+
+
+
+
+
+
+
+####### Extract SNPs & non-variant sites from call set
+
+gatk --java-options "-Xmx5g" \
+     SelectVariants \
+     -R $SNIC_TMP/${refGenome} \
+     -V $READ1 \
+     --intervals $SNIC_TMP/__targets.intervals \
+     --select-type-to-include SNP \
+     --select-type-to-include NO_VARIATION \
+     -O $RR/${OUTF}_snps.vcf.gz
+
+
+echo
+echo
+
+####### Extract INDELS from call set
+
+gatk --java-options "-Xmx5g" \
+     SelectVariants \
+     -R $SNIC_TMP/${refGenome} \
+     -V $READ1 \
+     --intervals $SNIC_TMP/__targets.intervals \
+     --select-type-to-include INDEL \
+     -O $RR/${OUTF}_indels.vcf.gz
+
+echo
+echo
+
+
+
+
+
+
+
+
+
+#### clean scratch disk
+rm -f $SNIC_TMP/${refGenome%.fa*}*
+rm -f $SNIC_TMP/_*
+
+
+
+
+
+
+
