@@ -34,7 +34,7 @@ SPL[1]=/crex1/proj/snic2017-7-149/private/birch_phylogeny_scripts/P03_MS_alignme
 REFGEN="PENDULA_FINLAND_LOIMAA.LOIMAA"
 
 # Number of species (including root species)
-NSPEC=11	
+NSPEC=14	
 
 #file containing gene list (or transcript list)
 GL=/crex1/proj/snic2017-7-149/private/birch_phylogeny_scripts/P03_MS_alignment/00_gene_list.txt	
