@@ -213,10 +213,6 @@ for n in `seq 1 1 1`; do		# genomic feature (exon intron)
                BS[i]=FAIL
             fi
 
-
-         # NOTE: afterwards, in order to get gene with minimum number of sites for each gene set, use:
-         # cat INFORMATIVE_SITES.gene_WHITESouth_trimal_10_UFBoot_GTR_FO_H4.txt | cut -f2 -d':' | cut -f1 -d' ' | sort -h
-
          done
 
          # save to file
