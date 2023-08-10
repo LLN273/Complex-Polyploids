@@ -30,17 +30,9 @@ AA=/crex1/proj/snic2020-6-184/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_VC
 
 # input/output subfolder 1
 RRsub[1]=exome_WGS
-RRsub[2]=exome_WGS
-RRsub[3]=exome_WGS
-RRsub[4]=exome_WGS
-RRsub[5]=exome_WGS
 
 # VCF list
-VCF[1]=MASTER_SingleRuns_ALLsamples_GOODonly_WHITE_snps
-VCF[2]=MASTER_SingleRuns_ALLsamples_GOODonly_SILVER_WHITE
-VCF[3]=MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE
-VCF[4]=MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS
-VCF[5]=MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS_PLATYPHYLLA
+VCF[1]=MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS_PLATYPHYLLA
 
 # VCF extensions
 #Vext[1]=filtered_tranche_2_PHYLO.vcf.gz
@@ -51,11 +43,7 @@ Vext[3]=filtered_tranche_2_PASS-BIALLELIC_FINAL.vcf.gz
 ANNF=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/07_Probe_set_MASKS/Bpendula.annotation-targetGenes_Gene-AND-2Kupstream_genes.bed	
 
 # Samples to be removed
-SRMV[1]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_A_MASTER_SingleRuns_ALLsamples_GOODonly_WHITE_snps.args
-SRMV[2]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_B_MASTER_SingleRuns_ALLsamples_GOODonly_SILVER_WHITE.args
-SRMV[3]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_C_MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE.args
-SRMV[4]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_D_MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS.args
-SRMV[5]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_E_MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS_PLATYPHYLLA.args
+SRMV[1]=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/18_clean_VCF_VariantSites_datasets/00_RemoveSamples_E_MASTER_SingleRuns_ALLsamples_GOODonly_NANA_SILVER_WHITE_HUMILIS_PLATYPHYLLA.args
 
 # FLAGS reference genome (unmasked:1; masked:0)
 FLAG_unmasked=1					
@@ -87,7 +75,7 @@ paste -d'-' $SNIC_TMP/__auxA.txt $SNIC_TMP/__aux3.txt > $SNIC_TMP/__targets.inte
 
 ############################## Remove private alleles 
 
-for k in `seq 1 1 5`; do 			# dataset (root)	
+for k in `seq 1 1 1`; do 			# dataset (root)	
 
    GO_AA=${AA}/${RRsub[$k]}
    GO_RR=${GO_AA}
