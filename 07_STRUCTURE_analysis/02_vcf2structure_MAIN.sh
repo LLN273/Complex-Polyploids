@@ -83,7 +83,7 @@ for k in `seq 1 1 1`; do 			# dataset (root)
    ## Associate each sample in VCF to population id and ploidy
    echo "creating population and ploidy files..."
    echo
-   Rscript --no-save $SRCDIR/02_population_ID.R $SPLOIDY_FOLDER/$SPLOIDY_file \
+   Rscript --no-save $SRCDIR/02s_population_ID.R $SPLOIDY_FOLDER/$SPLOIDY_file \
                                                        $SNIC_TMP/_samples.txt \
                                                        $GO_RR \
                                                        ${GO_FILE%.vcf.gz}.pop \
@@ -103,7 +103,7 @@ for k in `seq 1 1 1`; do 			# dataset (root)
    echo "Creating STRUCTURE files..."
    echo
    
-   Rscript --no-save $SRCDIR/02_vcf2structure.R $GO_RR/${GO_FILE%.vcf.gz}.pop \
+   Rscript --no-save $SRCDIR/02s_vcf2structure.R $GO_RR/${GO_FILE%.vcf.gz}.pop \
                                                 $GO_RR/${GO_FILE%.vcf.gz}.ploidy \
                                                 $SNIC_TMP/_GO_VCF.vcf \
                                                 $GO_RR \
