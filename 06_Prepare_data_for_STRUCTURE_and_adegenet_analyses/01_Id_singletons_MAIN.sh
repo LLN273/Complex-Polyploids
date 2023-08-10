@@ -11,7 +11,7 @@
 ulimit -c unlimited
 
 
-## Identify and remove position of private alleles (singletons only) in VCF file associated to tetraploid samples.
+## Identify and remove private alleles (singletons only).
 
 
 
