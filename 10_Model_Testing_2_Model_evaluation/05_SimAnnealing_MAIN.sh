@@ -82,7 +82,7 @@ fi
 
 
 
-################## Observed pairing profiles (each line in input file correspond to a different polarization geometry)
+################## Observed pairing profiles (each line in input file correspond to a different polarization geometry, in the following order: B. pendula; B. nana; B. humilis; B. platyphylla)
 PP_Obs=/crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/00_PAIRING_PROFILES_${pop}.txt		
 
 ################## Prior flag
