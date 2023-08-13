@@ -138,15 +138,15 @@ echo "pendula-platyphylla gene flow flag:" $geneFlowFlag
 
 
 python3 05_SimAnnealing_optimization.py $AA \
-					                                  $RR_MAIN \
-                                            $PP_Obs \
-	                                          $REP \
-											                      $NLOCUS \
-											                      $ILS_PRIOR \
-											                      $myMODEL \
-											                      $HomoeologousExchange \
-                                            $geneFlowFlag \
-                                            $Priorflag \
-											                      $PP
+					$RR_MAIN \
+                                        $PP_Obs \
+	                                $REP \
+					$NLOCUS \
+					$ILS_PRIOR \
+					$myMODEL \
+					$HomoeologousExchange \
+                                        $geneFlowFlag \
+                                        $Priorflag \
+					$PP
                                             
 											
