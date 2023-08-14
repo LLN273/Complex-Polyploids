@@ -333,287 +333,287 @@ GO_GL=$SNIC_TMP/00_gene_list_TRIM_MAX-00000.txt
 ###################
 ################### POLARIZATION
 ###################
-    echo
-    echo "1. POLARIZATION..." 
-	  date -u
+echo
+echo "1. POLARIZATION..." 
+date -u
 
-    # ILS 
-    GO_ILS_reduction=${PRIOR_LIST[1]}
-    GO_FOLDER=A_modILS_birch_CLEAN_reducedILS_${GO_ILS_reduction}perct
+# ILS 
+GO_ILS_reduction=${PRIOR_LIST[1]}
+GO_FOLDER=A_modILS_birch_CLEAN_reducedILS_${GO_ILS_reduction}perct
 	  
-	  # input folder
-    GO_AA=${AA}/${GO_FOLDER}
+# input folder
+GO_AA=${AA}/${GO_FOLDER}
 	  
-	  # Number of species (including root species)
-	  GO_NSPEC=14	
+# Number of species (including root species)
+GO_NSPEC=14	
 	  
-	  # platyphylla to pendula gene flow [0-1]
-	  GO_HYB_FRACTION_2pen=${PRIOR_LIST[2]}
+# platyphylla to pendula gene flow [0-1]
+GO_HYB_FRACTION_2pen=${PRIOR_LIST[2]}
 	 
-	  # Hybridization levels for each block
-	  GO_HYBRY_FRACTION0=${PRIOR_LIST[3]}
-	  GO_HYBRY_FRACTION1=${PRIOR_LIST[4]}
-	  GO_HYBRY_FRACTION2=${PRIOR_LIST[5]}
-	  GO_HYBRY_FRACTION3=${PRIOR_LIST[6]}
-	  GO_HYBRY_FRACTION4=${PRIOR_LIST[7]}
-	  GO_HYBRY_FRACTION5=${PRIOR_LIST[8]}
-	  GO_HYBRY_FRACTION6=${PRIOR_LIST[9]}
-	  GO_HYBRY_FRACTION7=${PRIOR_LIST[10]}
-	  GO_HYBRY_FRACTION8=${PRIOR_LIST[11]}
+# Hybridization levels for each block
+GO_HYBRY_FRACTION0=${PRIOR_LIST[3]}
+GO_HYBRY_FRACTION1=${PRIOR_LIST[4]}
+GO_HYBRY_FRACTION2=${PRIOR_LIST[5]}
+GO_HYBRY_FRACTION3=${PRIOR_LIST[6]}
+GO_HYBRY_FRACTION4=${PRIOR_LIST[7]}
+GO_HYBRY_FRACTION5=${PRIOR_LIST[8]}
+GO_HYBRY_FRACTION6=${PRIOR_LIST[9]}
+GO_HYBRY_FRACTION7=${PRIOR_LIST[10]}
+GO_HYBRY_FRACTION8=${PRIOR_LIST[11]}
 	  
-	  # Hybridization levels for extra species
-	  GO_HYBRY_EXTRA=${PRIOR_LIST[12]}
+# Hybridization levels for extra species
+GO_HYBRY_EXTRA=${PRIOR_LIST[12]}
 
 
-    ######## POLAR 1: Reference sequence: B. pendula
-    #echo "Polarization 1..."
+######## POLAR 1: Reference sequence: B. pendula
+#echo "Polarization 1..."
 	  
-	  # Polarizing reference sequence ID
-	  GO_REFspecies_1="PENDULA_SIM"
+# Polarizing reference sequence ID
+GO_REFspecies_1="PENDULA_SIM"
 		 
-		# polarization label
-		NALT=1
+# polarization label
+NALT=1
 
-    # output folder
-	  GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
-		rm -rf $GO_RR
-		mkdir -p $GO_RR
+# output folder
+GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
+rm -rf $GO_RR
+mkdir -p $GO_RR
 
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
             $SRCDIR_INI/21_polarize_MSA_query.sh $GO_AA $GO_RR $GO_NSPEC $GO_FOLDER $r_aux $NLOCUS "${GO_PAR[@]}" $GO_REFspecies_1 $NALT $GF_2pend_species $GO_HYB_FRACTION_2pen "${GO_HYBR0[@]}" ${GO_HYBRY_FRACTION0} \
                                   "${GO_HYBR1[@]}" "${GO_HYBR2[@]}" "${GO_HYBR3[@]}" "${GO_HYBR4[@]}" "${GO_HYBR5[@]}" "${GO_HYBR6[@]}" "${GO_HYBR7[@]}" "${GO_HYBR8[@]}" \
 								${GO_HYBRY_FRACTION1} ${GO_HYBRY_FRACTION2} ${GO_HYBRY_FRACTION3} ${GO_HYBRY_FRACTION4} ${GO_HYBRY_FRACTION5} ${GO_HYBRY_FRACTION6} ${GO_HYBRY_FRACTION7} ${GO_HYBRY_FRACTION8} \
 								${Extra_introgr_species} ${GO_HYBRY_EXTRA} ${myMODEL} &
-	  done
+done
 		 
-    #wait
+#wait
 
 
-    ######## POLAR 2: Reference sequence: B. nana
-    #echo "Polarization 2..."
+######## POLAR 2: Reference sequence: B. nana
+#echo "Polarization 2..."
 	  
-    # Polarizing reference sequence ID
-    GO_REFspecies_1="NANA_SIM"
+# Polarizing reference sequence ID
+GO_REFspecies_1="NANA_SIM"
 	 
-	  # polarization label
-	  NALT=2
+# polarization label
+NALT=2
 
-    # output folder
-    GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
-	  rm -rf $GO_RR
-	  mkdir -p $GO_RR
+# output folder
+GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
+rm -rf $GO_RR
+mkdir -p $GO_RR
 
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
             $SRCDIR_INI/21_polarize_MSA_query.sh $GO_AA $GO_RR $GO_NSPEC $GO_FOLDER $r_aux $NLOCUS "${GO_PAR[@]}" $GO_REFspecies_1 $NALT $GF_2pend_species $GO_HYB_FRACTION_2pen "${GO_HYBR0[@]}" ${GO_HYBRY_FRACTION0} \
                                "${GO_HYBR1[@]}" "${GO_HYBR2[@]}" "${GO_HYBR3[@]}" "${GO_HYBR4[@]}" "${GO_HYBR5[@]}" "${GO_HYBR6[@]}" "${GO_HYBR7[@]}" "${GO_HYBR8[@]}" \
 							${GO_HYBRY_FRACTION1} ${GO_HYBRY_FRACTION2} ${GO_HYBRY_FRACTION3} ${GO_HYBRY_FRACTION4} ${GO_HYBRY_FRACTION5} ${GO_HYBRY_FRACTION6} ${GO_HYBRY_FRACTION7} ${GO_HYBRY_FRACTION8} \
 							${Extra_introgr_species} ${GO_HYBRY_EXTRA} ${myMODEL} &
-	  done
+done
 		 
-    #wait
+#wait
 	  
 	  
-	  ######## POLAR 3: Reference sequence: B. humilis
-	  #echo "Polarization 3..."
+######## POLAR 3: Reference sequence: B. humilis
+#echo "Polarization 3..."
 	  
-    # Polarizing reference sequence ID
-    GO_REFspecies_1="HUMILIS_SIM"
+# Polarizing reference sequence ID
+GO_REFspecies_1="HUMILIS_SIM"
  
-    # polarization label
-    NALT=3
+# polarization label
+NALT=3
 
-    # output folder
-    GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
-    rm -rf $GO_RR
-    mkdir -p $GO_RR
+# output folder
+GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
+rm -rf $GO_RR
+mkdir -p $GO_RR
 
-	  #run in parallel for different replicates 
+#run in parallel for different replicates 
 		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
             $SRCDIR_INI/21_polarize_MSA_query.sh $GO_AA $GO_RR $GO_NSPEC $GO_FOLDER $r_aux $NLOCUS "${GO_PAR[@]}" $GO_REFspecies_1 $NALT $GF_2pend_species $GO_HYB_FRACTION_2pen "${GO_HYBR0[@]}" ${GO_HYBRY_FRACTION0} \
                                "${GO_HYBR1[@]}" "${GO_HYBR2[@]}" "${GO_HYBR3[@]}" "${GO_HYBR4[@]}" "${GO_HYBR5[@]}" "${GO_HYBR6[@]}" "${GO_HYBR7[@]}" "${GO_HYBR8[@]}" \
 							${GO_HYBRY_FRACTION1} ${GO_HYBRY_FRACTION2} ${GO_HYBRY_FRACTION3} ${GO_HYBRY_FRACTION4} ${GO_HYBRY_FRACTION5} ${GO_HYBRY_FRACTION6} ${GO_HYBRY_FRACTION7} ${GO_HYBRY_FRACTION8} \
 							${Extra_introgr_species} ${GO_HYBRY_EXTRA} ${myMODEL} &
-	  done
+done
 		 
-    #wait
+#wait
   
 
-	  ######## POLAR 4: Reference sequence: B. platyphylla
-    #echo "Polarization 4..."
+######## POLAR 4: Reference sequence: B. platyphylla
+#echo "Polarization 4..."
 
-    # Polarizing reference sequence ID
-    GO_REFspecies_1="PLATYPHYLLA_SIM"
+# Polarizing reference sequence ID
+GO_REFspecies_1="PLATYPHYLLA_SIM"
 
-    # polarization label
-    NALT=4
+# polarization label
+NALT=4
 
-    # output folder
-    GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
-    rm -rf $GO_RR
-    mkdir -p $GO_RR
+# output folder
+GO_RR=$SNIC_TMP/01_POLAR/ALT${NALT}
+rm -rf $GO_RR
+mkdir -p $GO_RR
 
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
             $SRCDIR_INI/21_polarize_MSA_query.sh $GO_AA $GO_RR $GO_NSPEC $GO_FOLDER $r_aux $NLOCUS "${GO_PAR[@]}" $GO_REFspecies_1 $NALT $GF_2pend_species $GO_HYB_FRACTION_2pen "${GO_HYBR0[@]}" ${GO_HYBRY_FRACTION0} \
                                "${GO_HYBR1[@]}" "${GO_HYBR2[@]}" "${GO_HYBR3[@]}" "${GO_HYBR4[@]}" "${GO_HYBR5[@]}" "${GO_HYBR6[@]}" "${GO_HYBR7[@]}" "${GO_HYBR8[@]}" \
 							${GO_HYBRY_FRACTION1} ${GO_HYBRY_FRACTION2} ${GO_HYBRY_FRACTION3} ${GO_HYBRY_FRACTION4} ${GO_HYBRY_FRACTION5} ${GO_HYBRY_FRACTION6} ${GO_HYBRY_FRACTION7} ${GO_HYBRY_FRACTION8} \
 							${Extra_introgr_species} ${GO_HYBRY_EXTRA} ${myMODEL} &
-	  done
+done
          
-    wait
+wait
 
 
 
 
-    ###################
-    ################### IQ-TREE
-    ###################
-	  echo
-	  echo "2. IQ-TREE..." 
-	  date -u
+###################
+################### IQ-TREE
+###################
+echo
+echo "2. IQ-TREE..." 
+date -u
 		  
-	  AA2=$SNIC_TMP/01_POLAR
-		RR2=$SNIC_TMP/02_IQTREE
+AA2=$SNIC_TMP/01_POLAR
+RR2=$SNIC_TMP/02_IQTREE
 	  
-    #GO_FOLDER=${INfolder[$k]}
-    #GO_POLAR=ALT
-	  #GO_NLOCUS=${NLOCUS}
+#GO_FOLDER=${INfolder[$k]}
+#GO_POLAR=ALT
+#GO_NLOCUS=${NLOCUS}
 	  
-    #input file suffix
-    InFileSUF=TRUE_CLEAN-ALT.fasta
+#input file suffix
+InFileSUF=TRUE_CLEAN-ALT.fasta
 		  
-    # Outgroup sequence
-    OUTG="ALNUS_SIM"
+# Outgroup sequence
+OUTG="ALNUS_SIM"
 	  
-    ######## POLAR 1: Reference sequence: B. pendula
-    #echo "Polarization 1..."
+######## POLAR 1: Reference sequence: B. pendula
+#echo "Polarization 1..."
 		  
-		# polarization label
- 		NALT=1
+# polarization label
+NALT=1
 
-    GO_AA2=${AA2}/ALT${NALT}
-    GO_RR2=${RR2}/ALT${NALT}
-	  rm -rf $GO_RR2
-	  mkdir -p $GO_RR2
+GO_AA2=${AA2}/ALT${NALT}
+GO_RR2=${RR2}/ALT${NALT}
+rm -rf $GO_RR2
+mkdir -p $GO_RR2
 			   
-	  #run in parallel for different replicates 
-	  for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 	  		      $SRCDIR_INI/22_IQ-TREE2_SINGLEGenes_ultrafastBS_SimData_query.sh $GO_AA2 $InFileSUF $GO_RR2 $BS ${MODEL_outfilename} $MODEL_IQTREE2 $MODEL_IQTREE2_RATE $NLOCUS $OUTG $r_aux $NALT &
-	  done
+done
 			   
-		#wait
+#wait
 			
 			
 			   
-    ######## POLAR 2: Reference sequence: B. nana
-    #echo "Polarization 2..."
+######## POLAR 2: Reference sequence: B. nana
+#echo "Polarization 2..."
 	  
-    # polarization label
-    NALT=2
+# polarization label
+NALT=2
 
-    GO_AA2=${AA2}/ALT${NALT}
-    GO_RR2=${RR2}/ALT${NALT}
-    rm -rf $GO_RR2
-    mkdir -p $GO_RR2
+GO_AA2=${AA2}/ALT${NALT}
+GO_RR2=${RR2}/ALT${NALT}
+rm -rf $GO_RR2
+mkdir -p $GO_RR2
    
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 		    $SRCDIR_INI/22_IQ-TREE2_SINGLEGenes_ultrafastBS_SimData_query.sh $GO_AA2 $InFileSUF $GO_RR2 $BS ${MODEL_outfilename} $MODEL_IQTREE2 $MODEL_IQTREE2_RATE $NLOCUS $OUTG $r_aux $NALT &
-	  done
+done
 		   
-		#wait  
+#wait  
 			   
 			   
 			   
-	  ######## POLAR 3: Reference sequence: B. humilis
-	  #echo "Polarization 3..."
+######## POLAR 3: Reference sequence: B. humilis
+#echo "Polarization 3..."
 	  
-    # polarization label
-    NALT=3
+# polarization label
+NALT=3
 
-    GO_AA2=${AA2}/ALT${NALT}
-    GO_RR2=${RR2}/ALT${NALT}
-    rm -rf $GO_RR2
-    mkdir -p $GO_RR2
+GO_AA2=${AA2}/ALT${NALT}
+GO_RR2=${RR2}/ALT${NALT}
+rm -rf $GO_RR2
+mkdir -p $GO_RR2
 
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 		    $SRCDIR_INI/22_IQ-TREE2_SINGLEGenes_ultrafastBS_SimData_query.sh $GO_AA2 $InFileSUF $GO_RR2 $BS ${MODEL_outfilename} $MODEL_IQTREE2 $MODEL_IQTREE2_RATE $NLOCUS $OUTG $r_aux $NALT &
-	  done
+done
 		 
-		#wait    
+#wait    
 			   
 			   
-    ######## POLAR 4: Reference sequence: B. platyphylla
-    #echo "Polarization 4..."
+######## POLAR 4: Reference sequence: B. platyphylla
+#echo "Polarization 4..."
 	  
-    # polarization label
-    NALT=4
+# polarization label
+NALT=4
 
-    GO_AA2=${AA2}/ALT${NALT}
-    GO_RR2=${RR2}/ALT${NALT}
-    rm -rf $GO_RR2
-    mkdir -p $GO_RR2
+GO_AA2=${AA2}/ALT${NALT}
+GO_RR2=${RR2}/ALT${NALT}
+rm -rf $GO_RR2
+mkdir -p $GO_RR2
 
-	  #run in parallel for different replicates 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+#run in parallel for different replicates 
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 		    $SRCDIR_INI/22_IQ-TREE2_SINGLEGenes_ultrafastBS_SimData_query.sh $GO_AA2 $InFileSUF $GO_RR2 $BS ${MODEL_outfilename} $MODEL_IQTREE2 $MODEL_IQTREE2_RATE $NLOCUS $OUTG $r_aux $NALT &
-	  done
+done
 		 
-		wait
+wait
 
    
                
 			   
-    ###################
-    ################### ## Create file with IQ-TEST2 consensus tree obtained for each gene | Use either maximum number of genes available (MAX) or random gene lists previously created
-    ###################			   
-    echo
-    echo "3. Glean IQ-TREE gene trees..." 
-	  date -u
+###################
+################### ## Create file with IQ-TEST2 consensus tree obtained for each gene | Use either maximum number of genes available (MAX) or random gene lists previously created
+###################			   
+echo
+echo "3. Glean IQ-TREE gene trees..." 
+date -u
 	  
-	  AA3=$SNIC_TMP/02_IQTREE
-	  RR3=${RR_MAIN}/03_PAIRINGfrequencies
+AA3=$SNIC_TMP/02_IQTREE
+RR3=${RR_MAIN}/03_PAIRINGfrequencies
 		 
-    # input file suffix
-    #file_aux=""
-    InFileSUF=TRUE_CLEAN_UFBoot_${MODEL_outfilename}.iqtree
+# input file suffix
+#file_aux=""
+InFileSUF=TRUE_CLEAN_UFBoot_${MODEL_outfilename}.iqtree
 			   
-    ### read gene list
+### read gene list
 
-    unset GENE_LIST
-    x=1
+unset GENE_LIST
+x=1
 
-    while read -r LINE                                                                      
-    do
-        GENE_LIST[$x]=$LINE
-        let "x+=1"
-    done < ${GO_GL}
+while read -r LINE                                                                      
+do
+   GENE_LIST[$x]=$LINE
+   let "x+=1"
+ done < ${GO_GL}
 
-    N_GENES=${#GENE_LIST[@]}
+N_GENES=${#GENE_LIST[@]}
 		 
 		 
-    ######## POLAR 1: Reference sequence: B. pendula
-    #echo "Polarization 1..."
+######## POLAR 1: Reference sequence: B. pendula
+#echo "Polarization 1..."
 	  
-    # polarization label
-    NALT=1
+# polarization label
+NALT=1
 		 
-    GO_AA3=${AA3}/ALT${NALT}
-    GO_RR3=${RR3}/ALT${NALT}
-    rm -rf $GO_RR3
+GO_AA3=${AA3}/ALT${NALT}
+GO_RR3=${RR3}/ALT${NALT}
+rm -rf $GO_RR3
 		 
-		for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 
-               mkdir -p $GO_RR3/$r_aux
+   mkdir -p $GO_RR3/$r_aux
   
-               ########output file
-               OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
-			         rm -f ${GO_RR3}/$r_aux/$OUTfile
+   ########output file
+   OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
+   rm -f ${GO_RR3}/$r_aux/$OUTfile
 			   
-               for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
+   for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
 			   
                   #input file
                   GO_GENE=${GENE_LIST[$i]}
@@ -622,33 +622,33 @@ GO_GL=$SNIC_TMP/00_gene_list_TRIM_MAX-00000.txt
 			
                   # get IQ-TEST2 consensus tree for each gene           
                   cat $GO_AA3/$r_aux/${InFile} | grep -A 2 'Consensus tree in newick format:' | tail -1 >> ${GO_RR3}/$r_aux/$OUTfile
-		           done
-    done
+   done
+done
 			
-	  # get genes from all replicates
-	  cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
+# get genes from all replicates
+cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
 		 
 
 
-    ######## POLAR 2: Reference sequence: B. nana
-    #echo "Polarization 2..."
+######## POLAR 2: Reference sequence: B. nana
+#echo "Polarization 2..."
 	  
-    # polarization label
-    NALT=2
+# polarization label
+NALT=2
 	 
-    GO_AA3=${AA3}/ALT${NALT}
-    GO_RR3=${RR3}/ALT${NALT}
-    rm -rf $GO_RR3
+GO_AA3=${AA3}/ALT${NALT}
+GO_RR3=${RR3}/ALT${NALT}
+rm -rf $GO_RR3
 	 
-    for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 
-            mkdir -p $GO_RR3/$r_aux
+   mkdir -p $GO_RR3/$r_aux
 
-            ########output file
-            OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
-		        rm -f ${GO_RR3}/$r_aux/$OUTfile
+   ########output file
+   OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
+   rm -f ${GO_RR3}/$r_aux/$OUTfile
 		    
-            for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
+   for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
 		   
                #input file
                GO_GENE=${GENE_LIST[$i]}
@@ -657,34 +657,33 @@ GO_GL=$SNIC_TMP/00_gene_list_TRIM_MAX-00000.txt
 		
                # get IQ-TEST2 consensus tree for each gene           
                cat $GO_AA3/$r_aux/${InFile} | grep -A 2 'Consensus tree in newick format:' | tail -1 >> ${GO_RR3}/$r_aux/$OUTfile
-            done
-     done
+   done
+done
 		
-     # get genes from all replicates
-     cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
+# get genes from all replicates
+cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
 	 
 		   
 		   
-	   ######## POLAR 3: Reference sequence: B. humilis
-     #echo "Polarization 3..."
+######## POLAR 3: Reference sequence: B. humilis
+#echo "Polarization 3..."
 	  
-     # polarization label
-     NALT=3
+# polarization label
+NALT=3
 	 
-     GO_AA3=${AA3}/ALT${NALT}
-     GO_RR3=${RR3}/ALT${NALT}
-     rm -rf $GO_RR3
+GO_AA3=${AA3}/ALT${NALT}
+GO_RR3=${RR3}/ALT${NALT}
+rm -rf $GO_RR3
 	 
-     for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 
-            mkdir -p $GO_RR3/$r_aux
+   mkdir -p $GO_RR3/$r_aux
 
-            ########output file
-            OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
-		        rm -f ${GO_RR3}/$r_aux/$OUTfile
-		   
-		   
-            for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
+   ########output file
+   OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
+   rm -f ${GO_RR3}/$r_aux/$OUTfile
+		      
+   for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
 		   
                #input file
                GO_GENE=${GENE_LIST[$i]}
@@ -693,33 +692,33 @@ GO_GL=$SNIC_TMP/00_gene_list_TRIM_MAX-00000.txt
 		
                # get IQ-TEST2 consensus tree for each gene           
                cat $GO_AA3/$r_aux/${InFile} | grep -A 2 'Consensus tree in newick format:' | tail -1 >> ${GO_RR3}/$r_aux/$OUTfile
-	          done
-       done
+   done
+done
 		
-       # get genes from all replicates
-       cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
+# get genes from all replicates
+cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
 	 
 
     
-	     ######## POLAR 4: Reference sequence: B. platyphylla
-       #echo "Polarization 4..."
+######## POLAR 4: Reference sequence: B. platyphylla
+#echo "Polarization 4..."
 	  
-       # polarization label
-       NALT=4
+# polarization label
+NALT=4
 	 
-       GO_AA3=${AA3}/ALT${NALT}
-       GO_RR3=${RR3}/ALT${NALT}
-       rm -rf $GO_RR3
+GO_AA3=${AA3}/ALT${NALT}
+GO_RR3=${RR3}/ALT${NALT}
+rm -rf $GO_RR3
 	 
-	     for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
+for r_aux in $( eval echo {01..${REP}} ); do		# replicates; must include leading zeros (REPLICATE_01, REPLICATE_02, etc)
 
-            mkdir -p $GO_RR3/$r_aux
+   mkdir -p $GO_RR3/$r_aux
 
-            ########output file
-            OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
-		        rm -f ${GO_RR3}/$r_aux/$OUTfile
+   ########output file
+   OUTfile=GENE_TREES_${r_aux}_UFBoot_MAX-${N_GENES}.newick
+   rm -f ${GO_RR3}/$r_aux/$OUTfile
 		   
-            for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
+   for i in `seq 1 1 $N_GENES`; do                 # cycle through genes
 		   
                #input file
                GO_GENE=${GENE_LIST[$i]}
@@ -728,122 +727,122 @@ GO_GL=$SNIC_TMP/00_gene_list_TRIM_MAX-00000.txt
 		
                # get IQ-TEST2 consensus tree for each gene           
                cat $GO_AA3/$r_aux/${InFile} | grep -A 2 'Consensus tree in newick format:' | tail -1 >> ${GO_RR3}/$r_aux/$OUTfile
-	          done
-       done
+   done
+done
 		
-       # get genes from all replicates
-       cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
+# get genes from all replicates
+cat ${GO_RR3}/*/GENE_TREES_*_UFBoot_MAX-*.newick > ${GO_RR3}/GENE_TREES_ALL_REPLICATES.newick
 	 
 
 
   
-      ###################
-      ################### For each gene family, ID species closer to polyploid
-      ###################	
-      echo
-      echo "4. Pairing frequencies..." 
-      date -u
+###################
+################### For each gene family, ID species closer to polyploid
+###################	
+echo
+echo "4. Pairing frequencies..." 
+date -u
 
-      AA4=${RR_MAIN}/03_PAIRINGfrequencies
+AA4=${RR_MAIN}/03_PAIRINGfrequencies
 	  
-	    ## tetraploid IDs
-	    TETRAPLOID="TETRAPLOID_SIM"
+## tetraploid IDs
+TETRAPLOID="TETRAPLOID_SIM"
 	  
-      ## outgroup
-      outgroup_ID="ALNUS_SIM"
+## outgroup
+outgroup_ID="ALNUS_SIM"
 		 
 
-      ######## POLAR 1: Reference sequence: B. pendula
-	    #echo "Polarization 1..."
+######## POLAR 1: Reference sequence: B. pendula
+#echo "Polarization 1..."
 	  
-      # polarization label
-      NALT=1
+# polarization label
+NALT=1
 		  
-      GO_AA4=${AA4}/ALT${NALT}
-      GO_RR4=$GO_AA4
+GO_AA4=${AA4}/ALT${NALT}
+GO_RR4=$GO_AA4
 		  
-	    ## output file
-	    OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
+## output file
+OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-      Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
                                                                      $OUTFile
 		  
-		  $SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
+$SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
 		  
 
-      ######## POLAR 2: Reference sequence: B. nana
-	    #echo "Polarization 2..."
+######## POLAR 2: Reference sequence: B. nana
+#echo "Polarization 2..."
 		  
-      # polarization label
-      NALT=2
+# polarization label
+NALT=2
 		  
-      GO_AA4=${AA4}/ALT${NALT}
-      GO_RR4=$GO_AA4
+GO_AA4=${AA4}/ALT${NALT}
+GO_RR4=$GO_AA4
 		  
-      ## output file
-	    OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
+## output file
+OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-      Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
                                                                      $OUTFile
 			 
-		   $SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
+$SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
 		  
 		  
-       ######## POLAR 3: Reference sequence: B. humilis
-	     #echo "Polarization 3..."
+######## POLAR 3: Reference sequence: B. humilis
+#echo "Polarization 3..."
 		  
-       # polarization label
-       NALT=3
+# polarization label
+NALT=3
 		  
-       GO_AA4=${AA4}/ALT${NALT}
-       GO_RR4=$GO_AA4
+GO_AA4=${AA4}/ALT${NALT}
+GO_RR4=$GO_AA4
 		  
-	     ## output file
-	     OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
+## output file
+OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-       Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
                                                                      $OUTFile
 			 
-       $SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
+$SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
 		  
 		  
-       ######## POLAR 4: Reference sequence: B. platyphylla
-	     #echo "Polarization 4..."
+######## POLAR 4: Reference sequence: B. platyphylla
+#echo "Polarization 4..."
 		  
-       # polarization label
-       NALT=4
+# polarization label
+NALT=4
 		  
-       GO_AA4=${AA4}/ALT${NALT}
-       GO_RR4=$GO_AA4
+GO_AA4=${AA4}/ALT${NALT}
+GO_RR4=$GO_AA4
 		  
-	     ## output file
-	     OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
+## output file
+OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-       Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
                                                                      $OUTFile
 			 
-       $SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
+$SRCDIR_INI/23_pairing_profile_summary.sh $GO_RR4 $OUTFile
 		  
 		  
-       ####### Joint pairing profile (all polarization geometries)
+####### Joint pairing profile (all polarization geometries)
 
-	     cat $AA4/ALT1/sister_ID_analysis_priors-ALT1_summary.txt $AA4/ALT2/sister_ID_analysis_priors-ALT2_summary.txt $AA4/ALT3/sister_ID_analysis_priors-ALT3_summary.txt $AA4/ALT4/sister_ID_analysis_priors-ALT4_summary.txt | grep -v '^p'> $AA4/sister_ID_analysis_priors-JOINT_summary.txt		  
+cat $AA4/ALT1/sister_ID_analysis_priors-ALT1_summary.txt $AA4/ALT2/sister_ID_analysis_priors-ALT2_summary.txt $AA4/ALT3/sister_ID_analysis_priors-ALT3_summary.txt $AA4/ALT4/sister_ID_analysis_priors-ALT4_summary.txt | grep -v '^p'> $AA4/sister_ID_analysis_priors-JOINT_summary.txt		  
 
 
 
