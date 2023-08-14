@@ -765,7 +765,7 @@ GO_RR4=$GO_AA4
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
 Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
-				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
+				                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
@@ -787,7 +787,7 @@ GO_RR4=$GO_AA4
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
 Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
-				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
+				                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
@@ -809,7 +809,7 @@ GO_RR4=$GO_AA4
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
 Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
-				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
+				                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
@@ -831,7 +831,7 @@ GO_RR4=$GO_AA4
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
 Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
-				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
+				                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
                                                                      $GO_RR4 \
