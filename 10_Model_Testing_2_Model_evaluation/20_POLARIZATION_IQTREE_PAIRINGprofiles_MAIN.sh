@@ -31,7 +31,7 @@ PP=${6:?msg}
 
 
 ###### Gene list
-GL_large=/crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/00_GENE_LIST.txt
+GL_large=$SRCDIR_INI/00_GENE_LIST.txt
 
 
 
@@ -764,7 +764,7 @@ GO_RR4=$GO_AA4
 ## output file
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
@@ -786,7 +786,7 @@ GO_RR4=$GO_AA4
 ## output file
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
@@ -808,7 +808,7 @@ GO_RR4=$GO_AA4
 ## output file
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
@@ -830,7 +830,7 @@ GO_RR4=$GO_AA4
 ## output file
 OUTFile="sister_ID_analysis_priors-ALT${NALT}.txt"
 		 
-Rscript --no-save /crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/24_IQTREE_gene_tree_DISTANCE_ALT.R \
+Rscript --no-save $SRCDIR_INI/24_IQTREE_gene_tree_DISTANCE_ALT.R \
 				                                                     ${GO_AA4}/GENE_TREES_ALL_REPLICATES.newick \
                                                                      $TETRAPLOID \
                                                                      $outgroup_ID \
