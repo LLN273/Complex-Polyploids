@@ -41,7 +41,7 @@ try:
     Nspecies = sys.argv[2]                  				# Number of species
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
@@ -49,7 +49,7 @@ try:
     HYBRID_1 = sys.argv[3]                  				# hybridizing sequence 1 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
@@ -57,7 +57,7 @@ try:
     HYBRID_2 = sys.argv[4]                  				# hybridizing sequence 2 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
@@ -65,7 +65,7 @@ try:
     HYBRID_3 = sys.argv[5]                  				# hybridizing sequence 3 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
@@ -73,7 +73,7 @@ try:
     HYBRID_4 = sys.argv[6]                  				# hybridizing sequence 4 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
@@ -81,7 +81,7 @@ try:
     HYBRID_CODE = sys.argv[7]                  				# hybridization coding (eg '0110' specifies that for this locus there are 2 gene copies obtained from the hybridizing species)
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY.py [input.fasta] [No. species] [hybridization ID1] [hybridization ID2] [hybridization ID3] [hybridization ID4] [hybridization code] \n')
     exit() 
 
 
