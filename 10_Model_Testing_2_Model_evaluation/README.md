@@ -6,7 +6,7 @@
 a) Download content of this folder to local sever.
 b) Run 05_SimAnnealing_MAIN.sh script 
 - remember to update paths; must also update bash file header and paths to iqtree, R, and python3.
-- you must first generate simulated MSAs using scripts located in the 09_Model_Testing_1_Polyploidization_and_hybridization_simulations folder [here]([https://github.com/LLN273/PolyAncestor/blob/main/01s_polarizeTETRA.py](https://github.com/LLN273/Complex-Polyploids/tree/main/09_Model_Testing_1_Polyploidization_and_hybridization_simulations))
+- you must first generate simulated MSAs using scripts located in the 09_Model_Testing_1_Polyploidization_and_hybridization_simulations folder [here](https://github.com/LLN273/Complex-Polyploids/tree/main/09_Model_Testing_1_Polyploidization_and_hybridization_simulations)
 - this step is computationally heavy; it is recommended you run this script in an cluster environment and reserve a whole node with twenty or more cores.
 c) Monitor ABC_SimAnnealing_log.txt file in results folder to check for convergence. For best results, you should let the algorithm run for several hundred or even thousands of iterations. Using multiple chains (using separate bash jobs) also helps to avoid local minima.
 
