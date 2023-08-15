@@ -41,7 +41,7 @@ try:
     Nspecies = sys.argv[2]                  				# Number of species
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5]  \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5]  \n')
     exit() 
 
 
@@ -49,7 +49,7 @@ try:
     RefGenID = sys.argv[3]                  				# Reference sequence ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -57,7 +57,7 @@ try:
     HYBRID_1 = sys.argv[4]                  				# hybridizing sequence 1 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -65,7 +65,7 @@ try:
     HYBRID_2 = sys.argv[5]                  				# hybridizing sequence 2 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -73,7 +73,7 @@ try:
     HYBRID_3 = sys.argv[6]                  				# hybridizing sequence 3 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -81,7 +81,7 @@ try:
     HYBRID_4 = sys.argv[7]                  				# hybridizing sequence 4 ID
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -89,7 +89,7 @@ try:
     HYBRID_CODE = sys.argv[8]                  				# hybridization coding (eg '0110' specifies that for this locus there are 2 gene copies from 'hybridizing species 1')
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -97,7 +97,7 @@ try:
     DELSEQ = sys.argv[9]                  				# Sequence to be removed from output phylogeny  
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -105,7 +105,7 @@ try:
     DELSEQ2 = sys.argv[10]                  				# Sequence to be removed from output phylogeny  
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -113,7 +113,7 @@ try:
     DELSEQ3 = sys.argv[11]                  				# Sequence to be removed from output phylogeny  
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -121,7 +121,7 @@ try:
     DELSEQ4 = sys.argv[12]                  				# Sequence to be removed from output phylogeny  
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
@@ -129,7 +129,7 @@ try:
     DELSEQ5 = sys.argv[13]                  				# Sequence to be removed from output phylogeny  
 except:
     print('\n Error: provide the following arguments:')
-    print('16s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
+    print('21s_polarizeMSA_fullCODED_ALT_TETRA_HYBRIDIZATION_BOTH_SinglePolarRef_2HYBRIDS_maxHETEROZY_step_2.py [input.fasta] [No. species] [refSequence ID1] [HYB species 1] [HYB species 2] [HYB species 3] [HYB species 4] [hybridization code] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [ancestral ID5] \n')
     exit() 
 
 
