@@ -50,7 +50,7 @@ pop[7]="JOK"
 RR=/crex1/proj/snic2020-6-184/nobackup/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/03_ABC_Final_optimization
 
 ################## priors folder (generated using 30_ABC_generate_priors_based_on_SA_results_MAIN.py script based on results obtained from simulated annealing optimization)
-PP=/crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/PRIORS_ABC   		
+PP=/crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/ABC_PRIORS   		
 
 ################## Number of replicates
 REP=25		
