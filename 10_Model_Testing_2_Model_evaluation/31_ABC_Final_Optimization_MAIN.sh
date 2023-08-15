@@ -66,7 +66,8 @@ for k in `seq 1 1 7`; do               # populations
    for n in `seq 0 100 999`; do               # prior sets
 
       RR_MAIN=${RR}/${myMODEL}/${pop[$k]}
-      PP_GO=${PP}/ABC_PRIORS_${myMODEL}_${pop[$k]}
+      #PP_GO=${PP}/ABC_PRIORS_${myMODEL}_${pop[$k]}
+      PP_GO=${PP}
       mkdir -p $RR_MAIN
    
       echo
