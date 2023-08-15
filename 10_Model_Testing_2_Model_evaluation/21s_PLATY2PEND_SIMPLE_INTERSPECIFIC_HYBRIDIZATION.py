@@ -38,7 +38,7 @@ try:
     Nspecies = sys.argv[2]                  				# Number of species
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -46,7 +46,7 @@ try:
     AncestralID_1 = sys.argv[3]                  				# ID first ancestral sequence  (tetraploid)
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -54,7 +54,7 @@ try:
     AncestralID_2 = sys.argv[4]                  				# ID second ancestral sequence  (tetraploid)
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -62,7 +62,7 @@ try:
     AncestralID_3 = sys.argv[5]                  				# ID third ancestral sequence  (tetraploid)
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -70,7 +70,7 @@ try:
     AncestralID_4 = sys.argv[6]                  				# ID fourth ancestral sequence  (tetraploid)
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -78,7 +78,7 @@ try:
     GF_2pend_species = sys.argv[7]                  				# hybridizing species ID
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
@@ -86,7 +86,7 @@ try:
     GF_FLAG = sys.argv[8]                  				# gene flow flag (0: no gene-flow; 1: gene-flow)
 except:
     print('\n Error: provide the following arguments:')
-    print('03s_polarizeMSA_fullCODED_ALT.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
+    print('21s_PLATY2PEND_SIMPLE_INTERSPECIFIC_HYBRIDIZATION.py [input.fasta] [No. species] [ancestral ID1] [ancestral ID2] [ancestral ID3] [ancestral ID4] [hybridization ID1] [hybridization flag] \n')
     exit() 
 
 
