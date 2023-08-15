@@ -67,7 +67,7 @@ OUTEXT[2]="PubCentralEurope"
 OUTEXT[3]="PubSVsouth"
 OUTEXT[4]="PubCentralAsia"
 
-# Depth filtering >> adjust also lines 302 and 537
+# Depth filtering >> adjust also lines 220 and 454
 DPfilter=8
 
 # Intervals list (BED format) exome data, target genes
@@ -211,7 +211,7 @@ for k in `seq 1 1 4`; do 			# dataset (root)
    module load GATK/4.2.0.0
    
    ################# Filter VCF file based on genotype fields (failed genotypes set to ./.):   		
-   #################       allele min depth (6 or 8)              
+   #################       allele min depth (8)              
 
    echo
    echo "3A. DP filtering"
