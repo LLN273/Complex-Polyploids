@@ -3,7 +3,7 @@
 
 ## 1. Initial model parameter optimization using simulated annealing
 
-1. Download content of this folder to local sever.
+1. Download contents of this folder to local sever.
 2. Run 05_SimAnnealing_MAIN.sh script 
 - remember to update paths; you must also update the bash file header and paths to iqtree, R, and python3.
 - you must first generate simulated MSAs using the scripts located in the 09_Model_Testing_1_Polyploidization_and_hybridization_simulations folder [here](https://github.com/LLN273/Complex-Polyploids/tree/main/09_Model_Testing_1_Polyploidization_and_hybridization_simulations). You can also use the synthetic MSAs generated for this paper, available at dryad [here](https://doi.org/10.5061/dryad.5tb2rbp9f). (See folder 07_SIMULATION_DATA_AND_POLYPLOIDIZATION_MODEL_TESTING/01_simphy_ILS/)
