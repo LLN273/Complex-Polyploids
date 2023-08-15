@@ -1,0 +1,13 @@
+# parameter	mean	sd	distribution	sameAs	
+ILSreduction	40	40	discrete_uniform	0
+platy_pend_gene_flow	0.17	0.03	normal_dist	0
+H0	0.0	0.0	continuous_uniform	0
+H1	0.11	0.03	normal_dist	0
+H2	0.23	0.04	normal_dist	0
+H3	0.29	0.04	normal_dist	0
+H4	0.0	0.0	continuous_uniform	0
+H5	0.04	0.025	normal_dist	0
+H6	0.0	0.0	continuous_uniform	0
+H7	0.0	0.0	continuous_uniform	0
+H8	0.0	0.0	continuous_uniform	0
+H9	0.0	0.0	continuous_uniform	0
