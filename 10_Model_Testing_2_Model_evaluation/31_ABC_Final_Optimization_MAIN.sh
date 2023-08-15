@@ -49,7 +49,8 @@ pop[7]="JOK"
 ##################  Output folder (root)
 RR=/crex1/proj/snic2020-6-184/nobackup/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/03_ABC_Final_optimization
 
-################## priors folder (generated using 30_ABC_generate_priors_based_on_SA_results_MAIN.py script based on results obtained from simulated annealing optimization)
+################## Main priors folder (generated using 30_ABC_generate_priors_based_on_SA_results_MAIN.py script based on results obtained from simulated annealing optimization)
+################## Priors for different models and populations must be stored in separate folders (inside main priors folder); must be named as ABC_PRIORS_${myMODEL}_${pop[$k]}
 PP=/crex1/proj/snic2017-7-149/private/Luis/P11_SIMULATED_FASTA_PHYLOGENY_HYBRIDIZATION_exomeData/02_ABC_Simulated_annealing/ABC_PRIORS   		
 
 ################## Number of replicates
@@ -66,8 +67,7 @@ for k in `seq 1 1 7`; do               # populations
    for n in `seq 0 100 999`; do               # prior sets
 
       RR_MAIN=${RR}/${myMODEL}/${pop[$k]}
-      #PP_GO=${PP}/ABC_PRIORS_${myMODEL}_${pop[$k]}
-      PP_GO=${PP}
+      PP_GO=${PP}/ABC_PRIORS_${myMODEL}_${pop[$k]}
       mkdir -p $RR_MAIN
    
       echo
