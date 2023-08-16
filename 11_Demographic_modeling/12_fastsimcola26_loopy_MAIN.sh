@@ -39,10 +39,10 @@ RR=/crex/proj/snic2020-6-184/private/Luis/P06_birch_exome_IGA-Sweden_2019/32c_fa
 EVOLM=bmt1
 
 # Template file (scenario)
-TPL=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/32_fastsimcoal2_Bpubescens_DivergenceTime/10_simulation_birch_3pop_divTime_model_${EVOLM}.tpl		
+TPL=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/32_fastsimcoal2_Bpubescens_DivergenceTime/12_simulation_birch_3pop_divTime_model_${EVOLM}.tpl		
 
 # Estimation file
-EST=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/32_fastsimcoal2_Bpubescens_DivergenceTime/10_simulation_birch_3pop_divTime_model_${EVOLM}.est
+EST=/crex1/proj/snic2017-7-149/private/Luis/P06_birch_exome_IGA-Sweden_2019/32_fastsimcoal2_Bpubescens_DivergenceTime/12_simulation_birch_3pop_divTime_model_${EVOLM}.est
 
 
 for k in `seq 1 1 4`; do 			# population	
