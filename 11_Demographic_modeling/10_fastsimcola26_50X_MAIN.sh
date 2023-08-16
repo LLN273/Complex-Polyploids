@@ -23,10 +23,10 @@ RRsub=exome_WGS
 DPfilter="8X"
 
 ##### input/output extension
-FEXT[1]="PubSVsouth"
-FEXT[2]="PubCentralAsia"
-FEXT[3]="PubSpain"
-FEXT[4]="PubMixed"
+FEXT[1]="PubCentralEurope"
+FEXT[2]="PubSVsouth"
+FEXT[3]="PubCentralAsia"
+FEXT[4]="PubSpain"
 
 # Input folder
 AA=/crex/proj/snic2020-6-184/private/Luis/P06_birch_exome_IGA-Sweden_2019/32b_fastsimcoal2_ancestral_state/BWA_unmasked
