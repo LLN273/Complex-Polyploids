@@ -54,7 +54,7 @@ NLOCUS=${5:?msg}
 ################## ILS prior
 ILS_PRIOR=${6:?msg}
 
-################## Simulation conditions (polyploidization models)
+################## Simulation conditions (polyploidization model)
 myMODEL=${7:?msg}
 
 ################## Homoeologous Exchange across subgenomes  (1: allowed;  0: not allowed) >> valid for allopolyploid models only
