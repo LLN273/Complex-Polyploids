@@ -49,7 +49,7 @@ outFile_root=${6:?msg}
 ANNF=${7:?msg}
 
 # Contig list
-GO_CONTIGlist=${8?msg}
+GO_CONTIGlist=${8:?msg}
 
 
 
